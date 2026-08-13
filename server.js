@@ -37,7 +37,6 @@ app.use(session({
   cookie: { httpOnly: true, sameSite: "lax", secure: false }
 }));
 
-// Yahan public hata kar direct root directory set kar di hai kyunki index.html main folder mein hai
 app.use(express.static(__dirname));
 
 function student(req, res, next) {
@@ -93,7 +92,6 @@ app.get("/api/candidates", (req, res) => {
 });
 
 app.post("/api/vote", student, (req, res) => {
-  const db.loadDB = loadDB;
   const db = loadDB();
   const s = db.students.find(x => x.id === req.session.student.id);
   const candidateId = Number(req.body.candidateId);
