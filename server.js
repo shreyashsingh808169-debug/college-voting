@@ -36,7 +36,9 @@ app.use(session({
   saveUninitialized: false,
   cookie: { httpOnly: true, sameSite: "lax", secure: false }
 }));
-app.use(express.static(path.join(__dirname, "public")));
+
+// Yahan public hata kar direct root directory set kar di hai kyunki index.html main folder mein hai
+app.use(express.static(__dirname));
 
 function student(req, res, next) {
   if (!req.session.student) return res.status(401).json({ error: "Please login first." });
@@ -91,6 +93,7 @@ app.get("/api/candidates", (req, res) => {
 });
 
 app.post("/api/vote", student, (req, res) => {
+  const db.loadDB = loadDB;
   const db = loadDB();
   const s = db.students.find(x => x.id === req.session.student.id);
   const candidateId = Number(req.body.candidateId);
