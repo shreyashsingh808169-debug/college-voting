@@ -23,6 +23,7 @@ function loadDB() {
   }
   return JSON.parse(fs.readFileSync(DB_FILE, "utf8"));
 }
+
 function saveDB(db) {
   fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
 }
@@ -41,6 +42,7 @@ function student(req, res, next) {
   if (!req.session.student) return res.status(401).json({ error: "Please login first." });
   next();
 }
+
 function admin(req, res, next) {
   if (!req.session.admin) return res.status(401).json({ error: "Admin login required." });
   next();
