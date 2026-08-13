@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>College Voting</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header><h1>🗳️ College Election</h1><p>Secure campus voting portal</p></header>
+
+<section id="auth" class="grid">
+<div class="card"><h2>Student Login</h2>
+<form id="loginForm">
+<input id="loginStudentId" placeholder="Student ID" required>
+<input id="loginPassword" type="password" placeholder="Password" required>
+<button>Login</button></form><p id="loginMsg" class="msg"></p></div>
+
+<div class="card"><h2>New Student</h2>
+<form id="registerForm">
+<input id="regStudentId" placeholder="Student ID" required>
+<input id="regName" placeholder="Full name" required>
+<input id="regPassword" type="password" placeholder="Password (4+ chars)" required>
+<button>Register</button></form><p id="regMsg" class="msg"></p></div>
+</section>
+
+<section id="voteArea" class="hidden">
+<div class="topbar"><div><b id="studentName"></b><span id="studentStatus"></span></div><button id="logout" class="secondary">Logout</button></div>
+<div class="card"><h2>Choose your candidate</h2>
+<div id="candidates" class="candidates"></div>
+<button id="voteBtn" disabled>Confirm Vote</button><p id="voteMsg" class="msg"></p>
+</div></section>
+
+<section id="admin" class="card"><h2>Admin Dashboard</h2>
+<form id="adminForm" class="inline">
+<input id="adminPassword" type="password" placeholder="Admin password">
+<button>Open Results</button></form>
+<div id="results" class="hidden"></div></section>
+</div>
+<script src="app.js"></script>
+</body></html>
